@@ -6,15 +6,17 @@ class Board(object):
         self.walls_ = [[]]
         self.width = 0
         self.height = 0
-        self.pxScale = 30
+        self.pxScale = 32
 
         self.readMapFile('assets/map1.txt')
-        print(self.width, self.height)
         pass
 
     def collides(self, actor):
-        actorX = actor.position.x
-        actorY = actor.position.y
+        actorX = round(actor.position.x / self.pxScale)
+        actorY = round(actor.position.y / self.pxScale)
+        print(actorX, actorY, self.isWall(actorY, actorX))
+        return self.isWall(actorY, actorX)
+
 
 
     def isWall(self, x, y):

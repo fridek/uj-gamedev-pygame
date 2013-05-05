@@ -106,6 +106,9 @@ def input(events):
     if key[K_UP]:
         if player.position.y > PLAYER_SPEED:
             player.position.y -= PLAYER_SPEED
+    if key[K_a]:
+        for item in items:
+            board.collides(item)
 
     # player should look at the mouse
     mousePos = vec2d(pygame.mouse.get_pos())
