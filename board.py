@@ -12,10 +12,9 @@ class Board(object):
         pass
 
     def collides(self, actor):
-        actorX = round(actor.position.x / self.pxScale)
-        actorY = round(actor.position.y / self.pxScale)
-        print(actorX, actorY, self.isWall(actorY, actorX))
-        return self.isWall(actorY, actorX)
+        actorX = int(actor.position.x / self.pxScale)
+        actorY = int(actor.position.y / self.pxScale)
+        return self.isWall(actorX, actorY)
 
 
 

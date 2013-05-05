@@ -69,8 +69,14 @@ def itemTick(item, timeDelta):
     """
     @param {Item} item
     """
-    image = pygame.transform.rotate(
-        item.image, -item.direction.angle)
+    if board.collides(item):
+        image = pygame.transform.rotate(
+            images[0], -item.direction.angle)
+        item.bounce(True, True)
+    else:
+        image = pygame.transform.rotate(
+            images[1], -item.direction.angle)
+
     imageWidth, imageHeight = image.get_size()
 
     draw_pos = image.get_rect().move(

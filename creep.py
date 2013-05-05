@@ -13,20 +13,14 @@ class Creep(Actor):
             self.direction.x * self.speed * timeDelta,
             self.direction.y * self.speed * timeDelta)
 
+        self.previousPosition = self.position
+        self.previousDirection = self.direction
         self.position += displacement
 
-        if self.position.x < boundsRect.left:
-            self.position.x = boundsRect.left
-            self.direction.x *= -1
-        elif self.position.x > boundsRect.right:
-            self.position.x = boundsRect.right
-            self.direction.x *= -1
-        elif self.position.y < boundsRect.top:
-            self.position.y = boundsRect.top
-            self.direction.y *= -1
-        elif self.position.y > boundsRect.bottom:
-            self.position.y = boundsRect.bottom
-            self.direction.y *= -1
+        if self.position.x < boundsRect.left or self.position.x > boundsRect.right:
+            self.bounce(True, False)
+        elif self.position.y < boundsRect.top or self.position.y > boundsRect.bottom:
+            self.bounce(False, True)
 
 
 
